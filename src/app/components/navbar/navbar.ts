@@ -1,13 +1,15 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { APP_NAME, IS_MEDIUM } from '../../app.constants';
-import { StateService } from '../../core/services/utilities/state';
-import { WindowsObserverService } from '../../core/services/utilities/windows-observer';
+import { State } from '../../core/services/utilities/state';
+import { WindowsObserver } from '../../core/services/utilities/windows-observer';
 
 @Component({
   selector: 'app-navbar',
@@ -15,78 +17,256 @@ import { WindowsObserverService } from '../../core/services/utilities/windows-ob
     MatToolbarModule,
     MatDividerModule,
     MatSidenavModule,
-    RouterLink,
     MatMenuModule,
     MatIconModule,
-    RouterLinkActive,
-    RouterOutlet,
+    MatButtonModule,
+    MatListModule,
+    MatTooltipModule,
   ],
   template: `
-    <mat-toolbar>
+    <mat-toolbar class="toolbar">
       <div class="left-container">
-        @if (viewport() <= medium) {
-        <button mat-icon-button matTooltip="menu" (click)="toogleDrawer()">
+        @if (width() < medium) {
+        <button mat-icon-button (click)="toggleDrawer()">
           <mat-icon>menu</mat-icon>
         </button>
         }
-        <span>{{ appName }}</span>
+        <a routerLink="/" class="logo-link">
+          <img src="/assets/chrome.png" alt="logo" />
+          <span>{{ appName }}</span>
+        </a>
       </div>
-    </mat-toolbar>
-    <mat-divider />
-    <mat-drawer-container autosize style="height: calc(100vh - 65px)">
-      <mat-drawer
-        [mode]="viewpoint() >= ismedium ? 'side' : 'over'"
-        [opened]="viewpoint() >= ismedium || isToogleDrawer()"
-      >
-        <a
-          mat-menu-item
-          routerLinkActive="active-link"
-          (click)="toogleDrawer()"
-        >
-          Sécurité</a
-        >
-        <a mat-menu-item routerLinkActive="active-link" (click)="toogleDrawer()"
-          >Par Google</a
-        >
-        <a
-          routerLink="/orders"
-          mat-menu-item
-          routerLinkActive="active-link"
-          (click)="toogleDrawer()"
-        >
-          Extensions
-          <mat-icon>arrow_outward</mat-icon></a
-        >
-      </mat-drawer>
 
-      <mat-drawer-content>
-        <router-outlet />
-      </mat-drawer-content>
-    </mat-drawer-container>
+      @if (width() >= medium) {
+      <nav class="nav-links">
+        @for (link of navLinks; track $index) {
+        <a
+          [href]="link.path"
+          [target]="link.external ? '_blank' : '_self'"
+          rel="noopener noreferrer"
+        >
+          <div class="l">
+            {{ link.label }}
+            @if(link.external){
+            <mat-icon class="external-icon">arrow_outward</mat-icon>
+            }
+          </div>
+        </a>
+        }
+      </nav>
+      }
+    </mat-toolbar>
+
+    <!-- Drawer -->
+    @if (state.isToggleDrawer() && width() < medium) {
+    <div class="drawer-overlay" (click)="toggleDrawer()"></div>
+
+    } @if (state.isToggleDrawer() && width() < medium) {
+    <div class="drawer-wrapper">
+      <div class="drawer">
+        <div class="drawer-content">
+          <div>
+            <div class="drawer-header">
+              <a routerLink="/" class="logo-link">
+                <img src="/assets/chrome.png" alt="logo" />
+                <span>{{ appName }}</span>
+              </a>
+            </div>
+            <mat-divider></mat-divider>
+            <br />
+            <mat-nav-list>
+              @for (link of navLinks; track $index) {
+              <a
+                mat-list-item
+                [href]="link.path"
+                [target]="link.external ? '_blank' : '_self'"
+                rel="noopener noreferrer"
+                (click)="onDrawerLinkClick()"
+              >
+                <div class="l">
+                  {{ link.label }}
+                  @if (link.external) {
+                  <mat-icon class="external-icon">arrow_outward</mat-icon>
+                  }
+                </div>
+              </a>
+              }
+            </mat-nav-list>
+          </div>
+
+          <div class="drawer-footer">
+            <button mat-flat-button>Télécharger Chrome</button>
+          </div>
+        </div>
+
+        <button mat-icon-button class="close-btn" (click)="toggleDrawer()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    }
   `,
   styles: `
-  mat-toolbar {
+    .toolbar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-    }
-  mat-drawer{
-    width: 220px;
-    border-right: 1px solid var(--mat-sys-outline-variant); 
-    border-radius: 0%;
-  }
-  .active-link{
-    background: var(--mat-sys-outline-variant)
-  }
-  `,
+      gap: 4rem;
+      padding: 1rem;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .left-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo-link {
+        margin-left: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 400;
+        font-size: 1.5rem;
+        img {
+          width: 35px;
+          height: 35px;
+        }
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        font-size: 17px;
+      }
+
+      .l {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: #5b5b5b;
+      }
+
+      .external-icon {
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      /* Drawer overlay */
+      .drawer-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(32, 33, 36, 0.5);
+        z-index: 9;
+        transition: opacity 0.3s ease;
+      }
+
+      /* Drawer wrapper */
+      .drawer-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        z-index: 10;
+        animation: slideIn 0.3s ease forwards;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      .drawer {
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+        height: 100%;
+        width: 400px;
+        position: relative;
+      }
+
+      .drawer-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
+      }
+
+      .drawer-header {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .drawer-footer {
+        padding: 16px;
+        border-top: 1px solid #eaeaea;
+      }
+
+      .drawer-footer button {
+        width: 100%;
+        height: 48px;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: -60px;
+        background: transparent;
+        color: white;
+        z-index: 11;
+      }
+    `,
 })
-export class Navbar {
+export class Navbar implements OnInit {
   appName = APP_NAME;
   medium = IS_MEDIUM;
-  viewport = inject(WindowsObserverService).width;
-  state = inject(StateService);
-  toogleDrawer = () => this.state.isToogleDriwer.update((value) => !value);
-  ismedium = IS_MEDIUM;
-  viewpoint = inject(WindowsObserverService).width;
-  isToogleDrawer = computed(() => this.state.isToogleDriwer());
+
+  private windows = inject(WindowsObserver);
+  state = inject(State);
+  width = this.windows.width;
+
+  navLinks = [
+    {
+      label: 'Sécurité',
+      path: 'https://www.google.com/intl/fr/chrome/safety/',
+      external: false,
+    },
+    {
+      label: 'Par Google',
+      path: 'https://www.google.com/intl/fr/chrome/browser-tools/',
+      external: false,
+    },
+    {
+      label: 'Extensions',
+      path: 'https://chromewebstore.google.com/category/extensions',
+      external: true,
+    },
+  ];
+
+  ngOnInit(): void {
+    this.windows.init();
+  }
+
+  toggleDrawer() {
+    this.state.isToggleDrawer.update((v) => !v);
+  }
+
+  onDrawerLinkClick() {
+    if (this.width() < this.medium) {
+      this.state.isToggleDrawer.set(false);
+    }
+  }
 }
