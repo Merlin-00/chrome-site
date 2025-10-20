@@ -325,29 +325,6 @@ import { DomSanitizer } from '@angular/platform-browser';
       margin: 0 auto;
     }
 
-    .footer-column h3 {
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      color: #202124;
-    }
-
-    .footer-column a {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 0.5rem 0;
-      overflow: hidden; 
-    }
-    .external-icon {
-      font-size: 16px;
-      margin-top: 10px;
-      transition: transform 0.2s ease-out; 
-    }
-    .footer-column a:hover .external-icon {
-      transform: translateX(4px);
-    }
-
     .footer-bottom {
       display: flex;
       flex-direction: column;

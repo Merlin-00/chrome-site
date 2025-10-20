@@ -48,7 +48,7 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
           <div class="l">
             {{ link.label }}
             @if(link.external){
-            <mat-icon class="external-icon">arrow_outward</mat-icon>
+            <mat-icon class="extern-icon">arrow_outward</mat-icon>
             }
           </div>
         </a>
@@ -86,7 +86,7 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
                 <div class="l">
                   {{ link.label }}
                   @if (link.external) {
-                  <mat-icon class="external-icon">arrow_outward</mat-icon>
+                  <mat-icon class="extern-icon">arrow_outward</mat-icon>
                   }
                 </div>
               </a>
@@ -95,7 +95,7 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
           </div>
 
           <div class="drawer-footer">
-            <button mat-flat-button>Télécharger Chrome</button>
+            <button class="btn" mat-flat-button>Télécharger Chrome</button>
           </div>
         </div>
 
@@ -108,6 +108,8 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
   `,
   styles: `
     .toolbar {
+      position: fixed;
+      top: 0;
       display: flex;
       align-items: center;
       gap: 4rem;
@@ -149,7 +151,7 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
         color: #5b5b5b;
       }
 
-      .external-icon {
+      .extern-icon {
         font-size: 16px;
         margin-top: 10px;
       }
@@ -213,11 +215,15 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
       .drawer-footer {
         padding: 16px;
         border-top: 1px solid #eaeaea;
-      }
-
-      .drawer-footer button {
-        width: 100%;
-        height: 48px;
+        .btn {
+          background-color: #1a73e8;
+          font-size: 16px;
+          width: 100%;
+          height: 48px;
+        }
+        .btn:hover{
+          background-color: var(--mat-sys-primary);
+        }
       }
 
       .close-btn {

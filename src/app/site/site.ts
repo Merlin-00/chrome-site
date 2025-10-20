@@ -28,8 +28,9 @@ import { ShortBar } from '../components/short-bar/short-bar';
       <mat-icon>tablet_android</mat-icon>
       <mat-icon class="arrow2">arrow_back_ios</mat-icon>
     </div>
-    } }
+    } } @if (!showShortBar()) {
     <app-navbar />
+    }
     <router-outlet />
     <app-footer />
     <app-short-bar />
@@ -65,7 +66,7 @@ import { ShortBar } from '../components/short-bar/short-bar';
       margin-right: 20px;
     }
     .item2{
-      top: 30%;
+      top: 26%;
       flex-direction: row;
       width: fit-content;
       height: auto;
@@ -99,6 +100,7 @@ export default class Site {
   width = this.windows.width;
   medium = IS_MEDIUM;
   state = inject(State);
+  showShortBar = this.state.showShortBar;
   toggleDrawer() {
     this.state.isToggleDrawer.update((v) => !v);
   }

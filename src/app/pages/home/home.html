@@ -1,7 +1,72 @@
-<p>home header</p>
-<app-update />
-<app-to-you />
-<app-secure />
-<app-fast />
-<app-for-google />
-<app-frequent-questions />
+<main class="home-root">
+    <!-- Hero -->
+    <section data-home-section id="hero">
+        <div class="hero-inner">
+            <h3>Envie de passer au niveau supérieur ? Découvrez Chromebook Plus avec Gemini</h3>
+            <a class="home-link"
+                href="https://www.google.com/chromebook/switch-to-chromebook/?utm_source=chrome.com&utm_medium=referral&utm_campaign=en-us"
+                target="_blank" rel="noopener noreferrer">Acheter un Chromebook Plus<mat-icon
+                    class="external-icon">arrow_outward</mat-icon></a>
+        </div>
+        <div class="hero-second">
+            <div class="h-s">
+                <div class="h-s-1">
+                    <img src="/assets/chrome.png" alt="logo-chome" />
+                    <h1 class="h1">
+                        Le navigateur
+                        <span>à votre image</span>
+                    </h1>
+                </div>
+                <button class="btn" mat-flat-button>
+                    <mat-icon>download</mat-icon>Télécharger Chrome
+                </button>
+                <a href="https://www.google.com/intl/fr/chrome/update/">Je souhaite mettre à jour Chrome</a>
+                <span>Pour Windows 11/10 64-bit</span>
+            </div>
+            <div class="h-s">
+                <mat-checkbox>
+                    Aidez-nous à améliorer Google Chrome en nous envoyant
+                    automatiquement des statistiques
+                    d'utilisation et des rapports d'erreur. <a class="more"
+                        href="https://www.google.com/support/chrome/bin/answer.py?answer=96817&hl=en" target="_blank"
+                        rel="noopener noreferrer"> En savoir plus</a>
+                </mat-checkbox>
+                <p>En téléchargeant Chrome, vous acceptez les Conditions d'utilisation de Google et les <a
+                        href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Conditions
+                        d'utilisation supplémentaires de Google Chrome et ChromeOS.</a></p>
+            </div>
+        </div>
+        <!-- <div class="section-image">
+            <img src="/assets/sections-images/image1.png" alt="image1">
+            <img src="/assets/sections-images/image2.png" alt="image2">
+            <img src="/assets/sections-images/image3.png" alt="image3">
+            <img src="/assets/sections-images/image4.png" alt="image4">
+            <img src="/assets/sections-images/image5.png" alt="image5">
+        </div> -->
+    </section>
+
+    <!-- Sections: each section has data-home-section attribute for observer -->
+    <section data-home-section id="update">
+        <app-update />
+    </section>
+
+    <section data-home-section id="to-you">
+        <app-to-you />
+    </section>
+
+    <section data-home-section id="secure">
+        <app-secure />
+    </section>
+
+    <section data-home-section id="fast">
+        <app-fast />
+    </section>
+
+    <section data-home-section id="by-google">
+        <app-for-google />
+    </section>
+
+    <section data-home-section id="faq">
+        <app-frequent-questions />
+    </section>
+</main>
