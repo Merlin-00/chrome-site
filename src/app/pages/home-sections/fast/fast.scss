@@ -1,0 +1,28 @@
+.item {
+  background-color: #c8ebd6;
+  color: #2c854f;
+}
+mat-card {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  mat-card-footer img {
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+  video {
+    width: 100%;
+  }
+}

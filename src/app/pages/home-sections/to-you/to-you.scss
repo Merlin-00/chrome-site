@@ -1,12 +1,8 @@
-h1 {
-  text-align: center;
-  .to {
-    padding: 1.5rem;
-    border-radius: 45px;
-    background-color: #feeded;
-    color: #e81a1a;
-  }
+.item {
+  background-color: #feeded;
+  color: #e81a1a;
 }
+
 a,
 .link {
   color: var(--mat-sys-primary);

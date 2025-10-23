@@ -42,12 +42,13 @@ body {
 }
 body {
   margin: 0;
+  line-height: 1.3;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 a {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.2rem;
   margin: 0.5rem 0;
   overflow: hidden;
   text-decoration: none;
@@ -63,9 +64,79 @@ a:hover .external-icon {
   color: black;
   transform: translateX(4px);
 }
+h1,
+h2 {
+  font-size: 4rem;
+  text-align: center;
+}
+h2 {
+  font-size: 3.5rem;
+}
+p {
+  font-size: large;
+  color: #5b5b5b;
+}
 h3 {
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
   color: #202124;
+}
+
+h4 {
+  font-size: 35px;
+}
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5rem;
+  margin-top: 3rem;
+  gap: 3rem;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  .item {
+    border-radius: 45px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: fit-content;
+    padding: 1rem;
+    mat-icon {
+      font-size: 80%;
+      height: auto;
+      width: fit-content;
+    }
+  }
+}
+.section-link {
+  font-size: 1rem;
+  color: var(--mat-sys-primary);
+}
+.section-link:hover .external-icon {
+  color: var(--mat-sys-primary);
+}
+@media (max-width: 850px) {
+  h1 {
+    gap: 2rem;
+    font-size: 3rem;
+  }
+  h2 {
+    gap: 1rem;
+  }
+}
+@media (max-width: 640px) {
+  h1,
+  h2 {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 400px) {
+  h1,
+  h2 {
+    font-size: 1.5rem;
+  }
 }

@@ -10,18 +10,16 @@
         </div>
         <div class="hero-second">
             <div class="h-s">
-                <div class="h-s-1">
-                    <img src="/assets/chrome.png" alt="logo-chome" />
-                    <h1 class="h1">
-                        Le navigateur
-                        <span>à votre image</span>
-                    </h1>
-                </div>
+                <img src="/assets/chrome.png" alt="logo-chome" />
+                <h1>
+                    Le navigateur <br> à votre image
+                </h1>
+
                 <button class="btn" mat-flat-button>
                     <mat-icon>download</mat-icon>Télécharger Chrome
-                </button>
+                </button><br />
                 <a href="https://www.google.com/intl/fr/chrome/update/">Je souhaite mettre à jour Chrome</a>
-                <span>Pour Windows 11/10 64-bit</span>
+                <br /><span>Pour Windows 11/10 64-bit</span>
             </div>
             <div class="h-s">
                 <mat-checkbox>
@@ -31,9 +29,9 @@
                         href="https://www.google.com/support/chrome/bin/answer.py?answer=96817&hl=en" target="_blank"
                         rel="noopener noreferrer"> En savoir plus</a>
                 </mat-checkbox>
-                <p>En téléchargeant Chrome, vous acceptez les Conditions d'utilisation de Google et les <a
+                <span>En téléchargeant Chrome, vous acceptez les Conditions d'utilisation de Google et les <a
                         href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Conditions
-                        d'utilisation supplémentaires de Google Chrome et ChromeOS.</a></p>
+                        d'utilisation supplémentaires de Google Chrome et ChromeOS.</a></span>
             </div>
         </div>
         <!-- <div class="section-image">
@@ -47,26 +45,44 @@
 
     <!-- Sections: each section has data-home-section attribute for observer -->
     <section data-home-section id="update">
-        <app-update />
+        <app-update></app-update>
     </section>
 
     <section data-home-section id="to-you">
-        <app-to-you />
+        <app-to-you></app-to-you>
     </section>
 
     <section data-home-section id="secure">
-        <app-secure />
+        <app-secure></app-secure>
     </section>
 
     <section data-home-section id="fast">
-        <app-fast />
+        <app-fast></app-fast>
     </section>
 
     <section data-home-section id="by-google">
-        <app-for-google />
+        <app-for-google></app-for-google>
     </section>
 
     <section data-home-section id="faq">
-        <app-frequent-questions />
+        <app-frequent-questions></app-frequent-questions>
     </section>
+    <mat-card class="card"
+        style="background-color: #1a73e8; padding: 10rem; padding-top: 5rem; padding-bottom: 0; text-align: center;">
+        <div>
+            <h1 style="color: white; margin-bottom: 0; margin-top: 0;">Emportez votre navigateur avec vous</h1>
+            <p style="color: white;">Téléchargez Chrome sur votre appareil mobile ou votre tablette et connectez-vous à
+                votre compte pour profiter de la même expérience sur votre navigateur, où que vous soyez.</p><br>
+            <button mat-raised-button style="padding: 2rem; font-size: 1rem;"><mat-icon>download</mat-icon> Télécharger
+                Chrome</button>
+        </div>
+        <div
+            style="display: flex; flex-direction: column; background-color: white; width: 20%; border-radius: 12px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; color: #5b5b5b; margin-left: 90%;">
+            <img style="width: 80%; padding: 1rem;" src="/assets/chrome_qr_code.png" alt=""><span
+                style="text-align: center;">Télécharger <br>
+                Chrome pour
+                votre
+                <br>téléphone</span>
+        </div>
+    </mat-card>
 </main>

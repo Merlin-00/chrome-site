@@ -1,9 +1,48 @@
-h1 {
-  text-align: center;
-  .secure {
-    padding: 1.5rem;
-    border-radius: 45px;
-    background-color: #edf2fe;
-    color: #1a73e8;
+.item {
+  background-color: #edf2fe;
+  color: #1a73e8;
+}
+img {
+  width: 400px;
+  border-radius: 1rem;
+  height: auto;
+}
+.card-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  mat-card {
+    flex: 1;
+    padding: 3rem;
+    cursor: pointer;
+    h4 {
+      margin: 0;
+    }
   }
+}
+.btn1,
+.btn2,
+.btn3,
+.btn4 {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn1 {
+  background-color: white;
+  color: #1a73e8;
+}
+.btn2 {
+  background-color: #1a73e8;
+  color: white;
+}
+.btn3 {
+  background-color: #ccdafc;
+  color: #1a73e8;
+}
+.btn4 {
+  background-color: #858282;
+  color: white;
 }

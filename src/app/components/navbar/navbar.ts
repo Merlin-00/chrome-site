@@ -116,6 +116,8 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
       padding: 1rem;
       background-color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1100; 
+      transform: translateZ(0);
       }
 
       .left-container {

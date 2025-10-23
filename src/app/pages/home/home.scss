@@ -14,13 +14,15 @@
   }
 }
 .hero-inner {
-  margin-top: 0.3rem;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
+  padding: 1rem;
   background-color: #edf2fe;
-  padding: 2rem;
-  max-height: 5px;
+  h3,
+  a {
+    margin: 2px;
+  }
 }
 a,
 .home-link {
@@ -40,12 +42,11 @@ a,
 }
 .h-s {
   grid-column: 2/3;
-  padding-top: 1rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
   img {
     width: 60px;
     height: 60px;
@@ -61,14 +62,9 @@ a,
   mat-checkbox .more {
     display: inline;
   }
-  .h-s-1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .h1 {
-      text-align: center;
-    }
-  }
+}
+.h-s:nth-child(2) {
+  gap: 1rem;
 }
 .section-image {
   display: flex;
@@ -77,5 +73,10 @@ a,
   img {
     width: 40%;
     height: 30%;
+  }
+}
+@media (max-width: 850px) {
+  .hero-second {
+    grid-template-rows: 400px auto;
   }
 }

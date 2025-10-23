@@ -1,0 +1,41 @@
+.item {
+  background-color: #fdf4e3;
+  color: #eb984a;
+}
+.card-g {
+  display: flex;
+  flex-direction: column;
+  margin: 5rem;
+  margin-top: 3rem;
+  gap: 3rem;
+  .card-child {
+    display: flex;
+    gap: 3rem;
+    width: 100%;
+    mat-card {
+      flex: 1;
+      padding: 3rem;
+      cursor: pointer;
+    }
+  }
+}
+.img {
+  width: 400px;
+  border-radius: 1rem;
+  height: auto;
+}
+.btn5,
+.btn6 {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn6 {
+  background-color: #1a73e8;
+  color: white;
+}
+.btn5 {
+  background-color: #858282;
+  color: white;
+}

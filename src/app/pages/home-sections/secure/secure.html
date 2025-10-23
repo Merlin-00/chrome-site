@@ -1,4 +1,114 @@
-<h1>
-    Parcourez le Web avec un navigateur
-    <span class="secure"><mat-icon></mat-icon>sécurité</span>
-</h1>
+<h2>
+    Parcourez le Web avec un
+    <div class="container">
+        navigateur
+        <div class="item"><mat-icon>policy</mat-icon>sécurisé</div>
+    </div>
+</h2>
+<div class="card">
+    <div class="card-child">
+        <mat-card style="color: white; background-color: #1a73e8;"
+            (click)="ShowCard.toogleCardVisibility(ShowCard.isCard1Visible)">
+            @if (ShowCard.isCard1Visible()) {
+            <img src="/assets/sections-images/secure/image3.png" alt="image3">
+            <p style="color: white; font-size: 1rem;">Avec le Gestionnaire de mots de passe de Google intégré, Chrome
+                vous permet
+                d'enregistrer, de gérer et de
+                protéger vos mots de passe en ligne facilement. Il vous permet également de créer des mots de passe plus
+                sécurisés pour chaque compte que vous utilisez.</p>
+            <a class="section-link" style="color: white;"
+                href="https://www.google.com/chrome/static/images/intl/fr_FR/v2/gallery/passwords-fill-2-2x.webp"
+                target="_blank" rel="noopener noreferrer">En
+                savoir plus sur le Gestionnaire de mots de passe<mat-icon class="external-icon"
+                    style="color: white;">arrow_outward</mat-icon></a>
+            }@else {
+            <p style="color: white;">GESTIONNAIRE DE MOTS DE PASSE</p>
+            <h4>Utilisez des mots de passe sécurisés sur tous les sites.</h4>
+            <img src="" alt="">
+            <img src="/assets/sections-images/secure/image1.png" alt="image1">
+            }
+            <mat-card-actions align="end">
+                @if (ShowCard.isCard1Visible()) {
+                <button class="btn3" mat-icon-button><mat-icon>close</mat-icon></button>
+                }@else {
+                <button class="btn1" mat-icon-button><mat-icon>add</mat-icon></button>
+                }
+            </mat-card-actions>
+        </mat-card>
+        <mat-card appearance="outlined" (click)="ShowCard.toogleCardVisibility(ShowCard.isCard2Visible)">
+            @if (ShowCard.isCard2Visible()) {
+            <img src="/assets/sections-images/secure/image5.png" alt="image5">
+            <p style="font-size: 1rem;">La navigation sécurisée de Chrome vous avertit en cas d'attaque
+                par un logiciel malveillant ou par hameçonnage. Activez la navigation sécurisée avec protection
+                renforcée pour une sécurité accrue.</p>
+            <a class="section-link" href="https://support.google.com/chrome/answer/9890866" target="_blank"
+                rel="noopener noreferrer">En savoir plus sur la navigation sécurisée<mat-icon
+                    class="external-icon">arrow_outward</mat-icon></a>
+            }@else {
+            <p>
+                NAVIGATION SÉCURISÉE AVEC PROTECTION RENFORCÉE</p>
+            <h4>
+                Naviguez en toute confiance, avec une meilleure protection en ligne.</h4>
+            }
+            <mat-card-actions align="end">
+                @if (ShowCard.isCard2Visible()) {
+                <button class="btn4" mat-icon-button><mat-icon>close</mat-icon></button>
+                }@else {
+                <button class="btn2" mat-icon-button><mat-icon>add</mat-icon></button>
+                }
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="card-child">
+        <mat-card style="background-color: #edf2fe;" (click)="ShowCard.toogleCardVisibility(ShowCard.isCard3Visible)">
+            @if (ShowCard.isCard3Visible()) {
+            <img src="/assets/sections-images/secure/image4.png" alt="image4">
+            <p style="font-size: 1rem;">Le contrôle de sécurité de Chrome vérifie la sécurité et la confidentialité de
+                votre expérience de navigation sur Internet, y compris des mots de passe, des extensions et des
+                paramètres. Lorsqu'un problème requiert votre attention, Chrome vous aide à le résoudre.</p>
+            <a class="section-link"
+                href="https://blog.google/products/chrome/more-intuitive-privacy-and-security-controls-chrome/"
+                target="_blank" rel="noopener noreferrer">En savoir plus sur la sécurité dans Chrome<mat-icon
+                    class="external-icon">arrow_outward</mat-icon></a>
+            }@else {
+            <p>CONTRÔLE DE SÉCURITÉ</p>
+            <h4>En un clic, vérifiez votre niveau de sécurité en temps réel.</h4>
+            }
+            <mat-card-actions align="end">
+                @if (ShowCard.isCard3Visible()) {
+                <button class="btn4" mat-icon-button><mat-icon>close</mat-icon></button>
+                }@else {
+                <button style="margin-top: 40%;" class="btn2" mat-icon-button><mat-icon>add</mat-icon></button>
+                }
+            </mat-card-actions>
+        </mat-card>
+        <mat-card style="color: white; background-color: var(--mat-sys-primary); padding-bottom: 0;"
+            (click)="ShowCard.toogleCardVisibility(ShowCard.isCard4Visible)">
+            @if (ShowCard.isCard4Visible()) {
+            <img src="/assets/sections-images/secure/image6.png" alt="image6">
+            <p style="font-size: 1rem; color: white">Avec Chrome, vous savez exactement ce que vous partagez en ligne,
+                et avec qui. Consultez le Guide sur la confidentialité pour découvrir pas à pas vos paramètres de
+                confidentialité.</p>
+            <a style="color: white" class="section-link"
+                href="https://blog.google/products/chrome/more-intuitive-privacy-and-security-controls-chrome/"
+                target="_blank" rel="noopener noreferrer">En savoir plus sur les paramètres de sécurité
+                intuitifs<mat-icon style="color: white" class="external-icon">arrow_outward</mat-icon></a>
+            <mat-card-actions align="end">
+
+                <button class="btn3" mat-icon-button><mat-icon>close</mat-icon></button>
+
+            </mat-card-actions>
+            }@else {
+            <p style="color: white;">GUIDE SUR LA CONFIDENTIALITÉ</p>
+            <h4>Gardez le contrôle de votre confidentialité grâce aux paramètres faciles à utiliser.</h4>
+            <mat-card-footer style="display: flex; justify-content: center; align-items: center;">
+                <img style="height: 100%;" src="/assets/sections-images/secure/image2.png" alt="image10">
+                <button style="margin-top: 30%;" class="btn1" mat-icon-button><mat-icon>add</mat-icon></button>
+            </mat-card-footer>
+            }
+        </mat-card>
+    </div>
+</div>
+<mat-card></mat-card>
+<mat-card></mat-card>
+<mat-card></mat-card>
