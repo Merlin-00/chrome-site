@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject, PLATFORM_ID } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -6,6 +6,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { State } from '../../core/services/utilities/state';
 import { IS_MEDIUM } from '../../app.constants';
 import { WindowsObserver } from '../../core/services/utilities/windows-observer';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-short-bar',
@@ -145,6 +146,7 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
   `,
 })
 export class ShortBar {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
   private windows = inject(WindowsObserver);
   width = this.windows.width;
   medium = IS_MEDIUM;
@@ -172,8 +174,10 @@ export class ShortBar {
 
   private navigateTo(hash: string) {
     this.activeSection.set(hash);
-    if (window && window.location) window.location.hash = hash;
-    const el = document.getElementById(hash);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isPlatformBrowser(this.platformId)) {
+      window.location.hash = hash;
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }

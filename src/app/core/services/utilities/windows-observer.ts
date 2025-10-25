@@ -1,39 +1,40 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class WindowsObserver {
-  // current width
-  width = signal<number>(typeof window !== 'undefined' ? window.innerWidth : 0);
-
+  width = signal<number>(0);
   private initialized = false;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   init() {
     if (this.initialized) return;
     this.initialized = true;
 
-    if (typeof window === 'undefined') return;
+    if (!isPlatformBrowser(this.platformId)) return;
 
-    // initial value
     this.width.set(window.innerWidth);
 
     try {
-      const observer = new ResizeObserver((entries) => {
-        if (!entries || entries.length === 0) return;
-        const entry = entries[0];
-        const inlineSize =
-          (entry.borderBoxSize &&
-            (entry.borderBoxSize as any)[0]?.inlineSize) ??
-          entry.contentRect?.width;
-        if (typeof inlineSize === 'number') {
-          this.width.set(Math.round(inlineSize));
-        }
-      });
-      observer.observe(document.body);
+      if (typeof ResizeObserver !== 'undefined') {
+        const observer = new ResizeObserver((entries) => {
+          if (!entries || entries.length === 0) return;
+          const entry = entries[0];
+          const inlineSize =
+            (entry.borderBoxSize &&
+              (entry.borderBoxSize as any)[0]?.inlineSize) ??
+            entry.contentRect?.width;
+          if (typeof inlineSize === 'number') {
+            this.width.set(Math.round(inlineSize));
+          }
+        });
+        observer.observe(document.body);
+      }
     } catch (err) {
-      // fallback to window resize event
+      // fallback
       const onResize = () => this.width.set(window.innerWidth);
       window.addEventListener('resize', onResize, { passive: true });
-      // set once
       this.width.set(window.innerWidth);
     }
   }

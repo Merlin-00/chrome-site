@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -9,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './to-you.scss',
 })
 export class ToYou implements OnInit {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   activeIndex = 0;
   fillHeight = 0;
 
@@ -37,9 +40,9 @@ export class ToYou implements OnInit {
   ];
 
   ngOnInit(): void {
-    requestAnimationFrame(() => {
-      this.startProgress();
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      requestAnimationFrame(() => this.startProgress());
+    }
   }
 
   startProgress() {
