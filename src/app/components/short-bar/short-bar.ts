@@ -67,6 +67,21 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
       z-index: 100;
       animation: shortbar-enter 360ms cubic-bezier(.2,.8,.2,1) both;
       max-width: max-content;
+          .btn {
+            background-color: #1a73e8;
+            color: #fff;
+            border-radius: 999px;
+            font-size: 16px;
+            padding: 2rem;
+            padding-top: 0;
+            padding-bottom: 0;
+            transition: background-color 0.2s;
+          }
+
+          .btn:hover {
+            background-color: var(--mat-sys-primary);
+          }
+
     }
 
     .links {
@@ -85,21 +100,6 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
     .links a.active,
     .links a:hover {
       background-color: #eef0f1;
-    }
-
-    .btn {
-      background-color: #1a73e8;
-      color: #fff;
-      border-radius: 999px;
-      font-size: 16px;
-      padding: 2rem;
-      padding-top: 0;
-      padding-bottom: 0;
-      transition: background-color 0.2s;
-    }
-
-    .btn:hover {
-      background-color: var(--mat-sys-primary);
     }
 
     @keyframes shortbar-enter {
