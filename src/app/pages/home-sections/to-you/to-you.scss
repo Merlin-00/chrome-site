@@ -2,18 +2,180 @@
   background-color: #feeded;
   color: #e81a1a;
 }
-
-a,
-.link {
-  color: var(--mat-sys-primary);
+img {
+  border-radius: 16px;
 }
+.container2 {
+  display: flex;
+  flex-direction: column;
+  margin: 4rem;
+}
+.principal-img {
+  margin: 0 auto;
+  img {
+    width: 700px;
+  }
+}
+.progress-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  padding: 4rem 2rem;
+
+  .image-column {
+    flex: 1;
+    position: relative;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      position: absolute;
+      width: 500px;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+
+      &.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  .text-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .step {
+        position: relative;
+        display: flex;
+        gap: 2rem;
+        div {
+          h3 {
+            margin-bottom: 0.5rem;
+          }
+
+          p {
+            margin-bottom: 1rem;
+            color: #555;
+          }
+        }
+
+        .progress-bar {
+          width: 6px;
+          height: 100px;
+          background: #e0e0e0;
+          border-radius: 4px;
+          overflow: hidden;
+          position: relative;
+
+          .progress-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #1a73e8;
+            transition: height 0.1s linear;
+          }
+        }
+      }
+    }
+
+    .link-container {
+      margin-top: 1rem;
+    }
+  }
+}
+
 .link {
+  color: #1a73e8;
+  background-color: #edf2fe;
+  padding: 0.5rem;
+  border-radius: 20px;
   font-weight: 500;
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 .link:hover .external-icon {
   color: var(--mat-sys-primary);
 }
-.l {
-  background-color: #edf2fe;
+.link:hover {
+  color: var(--mat-sys-primary);
+  background-color: #d6e2f3;
+}
+.to-you-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  padding: 4rem;
+
+  .text-side {
+    flex: 1;
+    h4 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    p {
+      color: #555;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .image-side {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      border-radius: 12px;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .main-img {
+      width: 600px;
+      z-index: 5;
+    }
+
+    .bubble {
+      position: absolute;
+      width: 100px;
+      opacity: 0.9;
+      z-index: 2;
+
+      &.bubble1 {
+        top: 10%;
+        left: 20%;
+      }
+      &.bubble2 {
+        bottom: 10%;
+        right: 25%;
+      }
+      &.bubble3 {
+        top: 40%;
+        right: 10%;
+      }
+      &.bubble4 {
+        bottom: 15%;
+        left: 10%;
+      }
+      &.bubble5 {
+        top: 15%;
+        right: 35%;
+      }
+    }
+  }
 }

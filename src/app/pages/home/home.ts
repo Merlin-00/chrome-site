@@ -36,10 +36,16 @@ export default class Home implements OnInit {
   private state = inject(State);
   private router = inject(Router);
 
+  private lastScrollY = 0;
+  private currentTranslateX = 0;
+  private maxTranslate = 200;
+
   ngOnInit(): void {
     this.windows.init();
     if (typeof window !== 'undefined') {
       requestAnimationFrame(() => this.initObserver());
+      this.lastScrollY = window.scrollY;
+      window.addEventListener('scroll', this.handleImageScroll.bind(this));
     }
   }
 
@@ -90,9 +96,27 @@ export default class Home implements OnInit {
           } catch {}
         }
       },
-      { threshold: Array.from({ length: 20 }, (_, i) => i / 20) } // very fine thresholds
+      { threshold: Array.from({ length: 20 }, (_, i) => i / 20) }
     );
 
     sections.forEach((s) => allObserver.observe(s));
+  }
+
+  private handleImageScroll() {
+    const container = document.getElementById('section-image-scroll');
+    if (!container) return;
+    const scrollY = window.scrollY;
+    const delta = scrollY - this.lastScrollY;
+    this.lastScrollY = scrollY;
+
+    // Scroll direction: delta > 0 = down, delta < 0 = up
+    // Move the container horizontally
+    this.currentTranslateX -= delta * 0.5;
+    // Limit the movement
+    this.currentTranslateX = Math.max(
+      -this.maxTranslate,
+      Math.min(this.maxTranslate, this.currentTranslateX)
+    );
+    container.style.transform = `translateX(${this.currentTranslateX}px)`;
   }
 }

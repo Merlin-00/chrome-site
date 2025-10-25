@@ -3,60 +3,71 @@
         <div class="item"><mat-icon>imagesearch_roller</mat-icon>Personnalisez-le </div> et
     </div>emportez-le partout
 </h2>
-<!-- <div>
-    <img src="/assets/" alt="">
-    <img src="/assets/sections-images/image1.png" alt="image1">
-    <img src="/assets/sections-images/image5.png" alt="image5">
-</div> -->
-<div class="">
-    <div class="">
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
+<div class="container2">
+    <div class="principal-img">
+        <img src="/assets/sections-images/image1.png" alt="image1">
+        <!-- <img src="/assets/" alt="">
+    <img src="/assets/sections-images/image5.png" alt="image5"> -->
     </div>
-    <div class="">
-        <div>
-            <h3>Personnalisez Chrome</h3>
-            <p>Personnalisez votre navigateur Web grâce à des thèmes, au mode sombre ainsi qu'à d'autres options conçues
-                juste pour vous.</p>
-            <a class="link" href="https://chrome.google.com/webstore/category/themes" target="_blank"
-                rel="noopener noreferrer">Découvrir les thèmes<mat-icon
-                    class="external-icon">arrow_outward</mat-icon></a>
+    <div class="progress-section">
+        <!-- image column -->
+        <div class="image-column">
+            @for (img of images; track $index) {
+            <img [src]="img" [class.active]="$index === activeIndex" alt="image section" />
+            }
         </div>
-        <div>
-            <h3>
-                Naviguez sur tous les appareils</h3>
-            <p>Connectez-vous à Chrome sur l'appareil de votre choix pour accéder à vos favoris, mots de passe
-                enregistrés et bien plus encore.</p>
-        </div>
-        <div>
-            <h3>Gagnez du temps avec la saisie automatique</h3>
-            <p>Enregistrez des adresses, des mots de passe et bien plus dans Chrome pour la saisie automatique de vos
-                informations.</p>
-        </div>
-        <span class="l">
-            <a class="link" href="http://accounts.google.com/" target="_blank" rel="noopener noreferrer">Pour commencer,
-                veuillez vous connecter<mat-icon class="external-icon">arrow_outward</mat-icon></a>
-        </span>
-    </div>
-</div>
-<div>
-    <div>
-        <h4>Optimisez votre expérience</h4>
 
-        <p>Que vous souhaitiez faire des achats, vous divertir ou être productif, vous trouverez de nombreuses
-            extensions sur le Chrome Web Store pour améliorer votre expérience.</p>
-        <span class="l">
-            <a class="link" href="https://chrome.google.com/webstore/category/extensions" target="_blank"
-                rel="noopener noreferrer">Découvrir les
-                extensions<mat-icon class="external-icon">arrow_outward</mat-icon></a>
-        </span>
+        <!-- Colonne de texte et barre -->
+        <div class="text-column">
+            <div class="steps">
+                @for (step of steps; track $index) {
+                <div class="step" (mouseenter)="setActive($index)">
+                    <div class="progress-bar">
+                        <div class="progress-fill"
+                            [style.height]="$index === activeIndex ? fillHeight + '%' : $index < activeIndex ? '100%' : '0%'">
+                        </div>
+                    </div>
+                    <div>
+                        <h3>{{ step.title }}</h3>
+                        <p>{{ step.text }}</p>
+                    </div>
+                </div>
+                }
+            </div>
+            @if (activeIndex === steps.length - 1) {
+            <div class="link-container">
+                <a class="link" href="http://accounts.google.com/" target="_blank" rel="noopener noreferrer">
+                    Pour commencer, veuillez vous connecter
+                    <mat-icon class="external-icon">arrow_outward</mat-icon>
+                </a>
+            </div>
+            }
+        </div>
     </div>
-    <!-- <div>
-        <img src="/assets/sections-images/to-you/image1.png" alt="image1">
-        <mat-icon></mat-icon>
-        <mat-icon></mat-icon>
-        <mat-icon></mat-icon>
-        <mat-icon></mat-icon>
-    </div> -->
+
+    <div class="to-you-section">
+        <div class="text-side">
+            <h4>Optimisez votre expérience</h4>
+            <p>
+                Que vous souhaitiez faire des achats, vous divertir ou être productif, vous trouverez de nombreuses
+                extensions sur
+                le Chrome Web Store pour améliorer votre expérience.
+            </p>
+            <a class="link" href="https://chrome.google.com/webstore/category/extensions" target="_blank"
+                rel="noopener noreferrer">
+                Découvrir les extensions
+                <mat-icon>arrow_outward</mat-icon>
+            </a>
+        </div>
+
+        <div class="image-side" id="to-you-images">
+            <img src="/assets/sections-images/to-you/image1.png" class="main-img" />
+            <img src="/assets/sections-images/to-you/image4.png" class="bubble bubble1" />
+            <img src="/assets/sections-images/to-you/image5.png" class="bubble bubble2" />
+            <img src="/assets/sections-images/to-you/image6.png" class="bubble bubble3" />
+            <img src="/assets/sections-images/to-you/image7.png" class="bubble bubble4" />
+            <img src="/assets/sections-images/to-you/image8.png" class="bubble bubble5" />
+        </div>
+    </div>
+
 </div>
