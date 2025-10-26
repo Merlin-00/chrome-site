@@ -11,10 +11,14 @@
   }
 }
 .home-root {
+  overflow-x: clip;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  section {
+    overflow: hidden;
+  }
 
   #update {
     display: flex;
@@ -83,6 +87,7 @@ a,
   align-items: center;
   gap: 2rem;
   margin-top: 4rem;
+  overflow: hidden;
 }
 
 .section-image-scroll .img1 {

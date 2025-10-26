@@ -1,76 +1,105 @@
 <h2>
-    <div class="container">La solution
-        <div class="item"><mat-icon>speed</mat-icon>rapide </div>pour
-    </div>effectuer des tâches en ligne
-</h2>
-<div class="card-container">
-    @if (width() >= medium) {
-    <mat-card appearance="outlined">
-        <div class="container">
-            <h4>Priorité aux performances</h4>
-            <div>
-                <p>Chrome a été développé dans un souci de performance. Optimisez votre
-                    expérience grâce à des
-                    fonctionnalités comme l'économiseur d'énergie et l'économiseur de mémoire.</p>
-                <a class="section-link"
-                    href="https://www.google.com/chrome/static/images/intl/fr_FR/v2/gallery/passwords-fill-2-2x.webp"
-                    target="_blank" rel="noopener noreferrer">En savoir plus sur l'économiseur d'énergie et
-                    l'économiseur de
-                    mémoire<mat-icon class="external-icon">arrow_outward</mat-icon></a>
-            </div>
+    <div class="container">
+        La solution
+        <div class="item">
+            <mat-icon>speed</mat-icon>rapide
         </div>
-        <video src="https://www.google.com/chrome/static/videos/intl/fr_FR/dev-components/non-chrome.mp4"></video>
-    </mat-card>
-    <mat-card appearance="outlined" style="background-color: #fbe2a5;">
-        <div class="container">
-            <h4>Organisez vos onglets</h4>
-            <div>
-                <p>Chrome dispose d'outils pour vous aider à gérer les onglets que vous souhaitez garder ouverts. Soyez
-                    organisé et plus productif : regroupez vos onglets, ajoutez-leur un libellé et attribuez-leur une
-                    couleur.</p>
-                <a class="section-link"
-                    href="https://www.google.com/chrome/static/images/intl/fr_FR/v2/gallery/passwords-fill-2-2x.webp"
-                    target="_blank" rel="noopener noreferrer">En savoir plus sur l'économiseur d'énergie et
-                    l'économiseur de
-                    mémoire<mat-icon class="external-icon">arrow_outward</mat-icon></a>
-            </div>
-        </div>
-        <mat-card-footer>
-            <img src="/assets/sections-images/fast/image1.png" alt="image1">
-        </mat-card-footer>
-    </mat-card>
-    <mat-card style="background-color: #308740; padding-right: 0; padding-bottom: 0; flex-direction: row;">
-        <div>
-            <h4 style="color: white;">Une solution optimisée pour votre appareil</h4>
-            <p style="color: white; font-size: 12px;">Nous avons développé Chrome pour que vos appareils soient
-                compatibles avec
-                différentes
-                plates-formes. Vous profitez ainsi d'une expérience fluide, quel que soit votre équipement.</p>
-            <div
-                style="display: flex; flex-direction: column; background-color: white; width: 35%; border-radius: 12px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; color: #5b5b5b;">
-                <img style="width: 80%; padding: 1rem;" src="/assets/chrome_qr_code.png" alt=""><span
-                    style="text-align: center;">Télécharger <br>
-                    Chrome pour
-                    votre
-                    <br>téléphone</span>
-            </div>
-        </div>
-        <div>
-            <img style="width: 100%; border-radius: 12px;" src="/assets/sections-images/fast/image2.png" alt="">
-        </div>
-    </mat-card>
-    }@else {
-    <div>
-        <mat-card style="background-color: #308740; padding: 0;">
-            <img style="width: 100%;" src="/assets/sections-images/fast/image2.png" alt="">
-        </mat-card>
-        <div>
-            <h4 style="font-size: larger;">Optimisé pour votre appareil</h4>
-            <p style="font-size: 1rem;">Nous avons développé Chrome pour que vos appareils soient compatibles avec
-                différentes
-                plates-formes. Vous
-                profitez ainsi d'une expérience fluide, quel que soit votre équipement.</p>
-        </div>
+        pour
     </div>
-    }
+    effectuer des tâches <br> en ligne
+</h2>
+@if (width() >= medium) {
+<div class="principal-container">
+    <div class="card-container" [style.transform]="getTransform()">
+
+        <mat-card appearance="outlined">
+            <div class="container">
+                <h4>Priorité aux performances</h4>
+                <div>
+                    <p>
+                        Chrome a été développé dans un souci de performance. Optimisez
+                        votre expérience grâce à des fonctionnalités comme l'économiseur
+                        d'énergie et l'économiseur de mémoire.
+                    </p>
+                    <a class="section-link"
+                        href="https://www.google.com/chrome/static/images/intl/fr_FR/v2/gallery/passwords-fill-2-2x.webp"
+                        target="_blank" rel="noopener noreferrer">En savoir plus
+                        <mat-icon class="external-icon">arrow_outward</mat-icon>
+                    </a>
+                </div>
+            </div>
+            <video src="https://www.google.com/chrome/static/videos/intl/fr_FR/dev-components/non-chrome.mp4"></video>
+        </mat-card>
+
+        <mat-card appearance="outlined" style="background-color: #fbe2a5">
+            <div class="container">
+                <h4>Organisez vos onglets</h4>
+                <div>
+                    <p>
+                        Chrome dispose d'outils pour vous aider à gérer les onglets que
+                        vous souhaitez garder ouverts. Soyez organisé et plus productif :
+                        regroupez vos onglets, ajoutez-leur un libellé et attribuez-leur
+                        une couleur.
+                    </p>
+                    <a class="section-link"
+                        href="https://www.google.com/chrome/static/images/intl/fr_FR/v2/gallery/passwords-fill-2-2x.webp"
+                        target="_blank" rel="noopener noreferrer">En savoir plus
+                        <mat-icon class="external-icon">arrow_outward</mat-icon>
+                    </a>
+                </div>
+            </div>
+            <mat-card-footer>
+                <img src="/assets/sections-images/fast/image1.png" alt="image1" />
+            </mat-card-footer>
+        </mat-card>
+
+        <mat-card style="background-color: #308740; padding-right: 0; padding-bottom: 0; flex-direction: row;">
+            <div>
+                <h4 style="color: white">Une solution optimisée pour votre appareil</h4>
+                <p style="color: white; font-size: 12px">
+                    Nous avons développé Chrome pour que vos appareils soient compatibles
+                    avec différentes plates-formes.
+                </p>
+                <div
+                    style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1rem; background-color: white; width: 35%; height: 61.5%; padding: 1rem; border-radius: 12px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; color: #5b5b5b;">
+                    <img style="width: 90%;" src="/assets/chrome_qr_code.png" alt="" />
+                    <span style=" text-align: center;">
+                        Télécharger Chrome pour votre téléphone
+                    </span>
+                </div>
+            </div>
+            <div>
+                <img style="width: 100%; height: 100%; border-radius: 12px"
+                    src="/assets/sections-images/fast/image2.png" alt="" />
+            </div>
+        </mat-card>
+    </div>
+    <br><br>
+    <div class="carousel-controls">
+        <button
+            style="background-color: #edf2fe; color: var(--mat-sys-primary); padding: 1.5rem; display: flex; align-items: center; justify-content: center;"
+            mat-icon-button (click)="prevCard()" [disabled]="currentIndex === 0">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button
+            style="background-color: #edf2fe; color: var(--mat-sys-primary); padding: 1.5rem; display: flex; align-items: center; justify-content: center;"
+            mat-icon-button (click)="nextCard()" [disabled]="currentIndex === cards.length - 1">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
 </div>
+}
+@else {
+<div style="margin: 5rem; margin-top: 1; width: 400px; height: auto;">
+    <mat-card style="background-color: #308740; padding: 0; width: 400px; height: auto;">
+        <img style="width: 100%;" src="/assets/sections-images/fast/image2.png" alt="">
+    </mat-card>
+    <div>
+        <h4 style="font-size: larger;">Optimisé pour votre appareil</h4>
+        <p style="font-size: 1rem;">Nous avons développé Chrome pour que vos appareils soient compatibles avec
+            différentes
+            plates-formes. Vous
+            profitez ainsi d'une expérience fluide, quel que soit votre équipement.</p>
+    </div>
+</div>
+}

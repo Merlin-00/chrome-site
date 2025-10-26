@@ -94,11 +94,16 @@
         style="background-color: #1a73e8; padding: 10rem; padding-top: 5rem; padding-bottom: 0; text-align: center;">
         <div>
             <h1 style="color: white; margin-bottom: 0; margin-top: 0;">Emportez votre navigateur avec vous</h1>
+            @if (width() >= medium) {
             <p style="color: white;">Téléchargez Chrome sur votre appareil mobile ou votre tablette et connectez-vous à
                 votre compte pour profiter de la même expérience sur votre navigateur, où que vous soyez.</p><br>
-            <button mat-raised-button style="padding: 2rem; font-size: 1rem;"><mat-icon>download</mat-icon> Télécharger
+            }
+            <button mat-raised-button
+                style="padding: 2rem; font-size: 1rem; margin: 1rem; margin-bottom: 3rem;"><mat-icon>download</mat-icon>
+                Télécharger
                 Chrome</button>
         </div>
+        @if (width() >= medium) {
         <div
             style="display: flex; flex-direction: column; background-color: white; width: 20%; border-radius: 12px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; color: #5b5b5b; margin-left: 90%;">
             <img style="width: 80%; padding: 1rem;" src="/assets/chrome_qr_code.png" alt=""><span
@@ -107,5 +112,6 @@
                 votre
                 <br>téléphone</span>
         </div>
+        }
     </mat-card>
 </main>

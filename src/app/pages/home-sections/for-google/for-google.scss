@@ -10,6 +10,7 @@
   gap: 3rem;
   .card-child {
     display: flex;
+    flex-wrap: wrap;
     gap: 3rem;
     width: 100%;
     mat-card {
@@ -38,4 +39,13 @@
 .btn5 {
   background-color: #858282;
   color: white;
+}
+@media (max-width: 800px) {
+  .card-g {
+    mat-card {
+      img {
+        width: 300px;
+      }
+    }
+  }
 }

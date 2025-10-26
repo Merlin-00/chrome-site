@@ -3,6 +3,7 @@
         <div class="item"><mat-icon>imagesearch_roller</mat-icon>Personnalisez-le </div> et
     </div>emportez-le partout
 </h2>
+@if (width() >= medium) {
 <div class="container2">
     <div class="principal-img">
         <img src="/assets/sections-images/image1.png" alt="image1">
@@ -12,8 +13,8 @@
     <div class="progress-section">
         <!-- image column -->
         <div class="image-column">
-            @for (img of images; track $index) {
-            <img [src]="img" [class.active]="$index === activeIndex" alt="image section" />
+            @for (step of steps; track $index) {
+            <img [src]="step.image" [class.active]="$index === activeIndex" alt="image section" />
             }
         </div>
 
@@ -34,14 +35,14 @@
                 </div>
                 }
             </div>
-            @if (activeIndex === steps.length - 1) {
+
             <div class="link-container">
                 <a class="link" href="http://accounts.google.com/" target="_blank" rel="noopener noreferrer">
                     Pour commencer, veuillez vous connecter
                     <mat-icon class="external-icon">arrow_outward</mat-icon>
                 </a>
             </div>
-            }
+
         </div>
     </div>
 
@@ -71,3 +72,18 @@
     </div>
 
 </div>
+}@else {
+<div style="margin: 5rem; margin-top: 1; width: 400px; height: auto;">
+    @for (step of steps; track $index) {
+    <img style=" width: 400px; height: auto;" [src]="step.image" alt="image section" />
+    <h4 style="font-size: larger;">{{ step.title }}</h4>
+    <p style="font-size: 1rem;">{{ step.text }}</p>
+    @if (step.link) {
+    <a class="link" [href]='step.link' target="_blank" rel="noopener noreferrer">
+        {{step.textLink}}
+        <mat-icon class="external-icon">arrow_outward</mat-icon>
+    </a>
+    }
+    }
+</div>
+}

@@ -46,3 +46,22 @@ img {
   background-color: #858282;
   color: white;
 }
+@media (max-width: 800px) {
+  .card {
+    margin-top: 0;
+    gap: 1rem;
+  }
+  .card-child {
+    margin-top: 0;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    mat-card {
+      width: 400px;
+      mat-card-footer {
+        .bt {
+          margin-right: 20%;
+        }
+      }
+    }
+  }
+}
