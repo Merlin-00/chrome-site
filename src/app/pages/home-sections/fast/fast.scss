@@ -2,18 +2,32 @@
   background-color: #c8ebd6;
   color: #2c854f;
 }
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin: 5rem;
+  margin-top: 3rem;
+  gap: 3rem;
+}
 mat-card {
+  width: 500px;
   padding: 3rem;
   display: flex;
   flex-direction: column;
   .container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 3rem;
+    h4 {
+      margin-top: 1rem;
+    }
     div {
       display: flex;
       flex-direction: column;
+      p,
+      a {
+        font-size: 12px;
+      }
     }
   }
   mat-card-footer img {

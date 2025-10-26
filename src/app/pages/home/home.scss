@@ -15,9 +15,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  section {
-    padding-top: 3.7rem;
-  }
+
   #update {
     display: flex;
     flex-direction: column;
@@ -48,6 +46,14 @@ a,
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  a {
+    font-size: 12px;
+  }
+  mat-checkbox span a,
+  span,
+  span a {
+    font-size: 10px;
+  }
   img {
     width: 60px;
     height: 60px;
@@ -56,11 +62,15 @@ a,
     background-color: #1a73e8;
     font-size: 16px;
     padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .btn:hover {
     background-color: var(--mat-sys-primary);
   }
-  mat-checkbox .more {
+  mat-checkbox .more,
+  span a {
     display: inline;
   }
 }
@@ -81,4 +91,15 @@ a,
 
 .section-image-scroll .img2 {
   width: 240px;
+}
+@media (max-width: 780px) {
+  .hero-second {
+    grid-template-rows: 300px auto;
+  }
+  .h-s {
+    .btn {
+      padding: 1rem;
+      font-size: 13px;
+    }
+  }
 }

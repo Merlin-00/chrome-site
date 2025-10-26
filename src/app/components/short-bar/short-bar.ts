@@ -38,15 +38,12 @@ import { isPlatformBrowser } from '@angular/common';
         placeholder="Explorer"
         (selectionChange)="onSelect($event.value)"
       >
-        @for (section of sectionsNav; track $index) {
+        @for (section of sectionsNavMobile; track $index) {
         <mat-option [value]="section.hash">{{ section.label }}</mat-option>
         }
       </mat-select>
 
-      <button class="btn" mat-flat-button>
-        <mat-icon>download</mat-icon>
-        Télécharger Chrome
-      </button>
+      <button class="btn" mat-flat-button>Télécharger Chrome</button>
       }
     </mat-toolbar>
     }
@@ -68,12 +65,13 @@ import { isPlatformBrowser } from '@angular/common';
       z-index: 100;
       animation: shortbar-enter 360ms cubic-bezier(.2,.8,.2,1) both;
       max-width: max-content;
+      height: fit-content;
           .btn {
             background-color: #1a73e8;
             color: #fff;
             border-radius: 999px;
-            font-size: 16px;
-            padding: 2rem;
+            font-size: 12px;
+            padding: 1.5rem;
             padding-top: 0;
             padding-bottom: 0;
             transition: background-color 0.2s;
@@ -120,14 +118,14 @@ import { isPlatformBrowser } from '@angular/common';
         border-radius: 0;
         border-top: 1px solid #dadce0;
         box-shadow: 0 -4px 18px rgba(32, 33, 36, 0.08);
-        gap: 1rem;
         padding: 0.75rem 1rem;
         animation: slide-up 420ms cubic-bezier(.2,.8,.2,1) both;
         max-width: 100%;
+        height: 10%;
       }
 
       .mobile-select {
-        max-width: 120px;
+        max-width: 100px;
         padding: 3rem;
         color: #1a73e8;
       }
@@ -156,6 +154,12 @@ export class ShortBar {
     { label: 'À vous', hash: 'to-you' },
     { label: 'Sécurisé', hash: 'secure' },
     { label: 'Rapide', hash: 'fast' },
+    { label: 'Par Google', hash: 'by-google' },
+  ];
+  sectionsNavMobile = [
+    { label: 'Rapide', hash: 'fast' },
+    { label: 'Sécurisé', hash: 'secure' },
+    { label: 'À vous', hash: 'to-you' },
     { label: 'Par Google', hash: 'by-google' },
   ];
 

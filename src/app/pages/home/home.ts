@@ -13,6 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { isPlatformBrowser } from '@angular/common';
+import { IS_MEDIUM } from '../../app.constants';
 
 @Component({
   selector: 'app-home',
@@ -33,6 +34,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export default class Home implements OnInit {
   private windows = inject(WindowsObserver);
+  medium = IS_MEDIUM;
   width = this.windows.width;
   private state = inject(State);
   private router = inject(Router);

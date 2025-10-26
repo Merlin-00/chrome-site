@@ -3,12 +3,14 @@
         <div class="item"><mat-icon>speed</mat-icon>rapide </div>pour
     </div>effectuer des tâches en ligne
 </h2>
-<div class="card">
+<div class="card-container">
+    @if (width() >= medium) {
     <mat-card appearance="outlined">
         <div class="container">
             <h4>Priorité aux performances</h4>
             <div>
-                <p>Chrome a été développé dans un souci de performance. Optimisez votre expérience grâce à des
+                <p>Chrome a été développé dans un souci de performance. Optimisez votre
+                    expérience grâce à des
                     fonctionnalités comme l'économiseur d'énergie et l'économiseur de mémoire.</p>
                 <a class="section-link"
                     href="https://www.google.com/chrome/static/images/intl/fr_FR/v2/gallery/passwords-fill-2-2x.webp"
@@ -37,14 +39,15 @@
             <img src="/assets/sections-images/fast/image1.png" alt="image1">
         </mat-card-footer>
     </mat-card>
-    <mat-card style="background-color: #308740; flex-direction: row;">
+    <mat-card style="background-color: #308740; padding-right: 0; padding-bottom: 0; flex-direction: row;">
         <div>
             <h4 style="color: white;">Une solution optimisée pour votre appareil</h4>
-            <p style="color: white;">Nous avons développé Chrome pour que vos appareils soient compatibles avec
+            <p style="color: white; font-size: 12px;">Nous avons développé Chrome pour que vos appareils soient
+                compatibles avec
                 différentes
                 plates-formes. Vous profitez ainsi d'une expérience fluide, quel que soit votre équipement.</p>
             <div
-                style="display: flex; flex-direction: column; background-color: white; width: 35%; border-radius: 12px; color: #5b5b5b;">
+                style="display: flex; flex-direction: column; background-color: white; width: 35%; border-radius: 12px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; color: #5b5b5b;">
                 <img style="width: 80%; padding: 1rem;" src="/assets/chrome_qr_code.png" alt=""><span
                     style="text-align: center;">Télécharger <br>
                     Chrome pour
@@ -52,6 +55,22 @@
                     <br>téléphone</span>
             </div>
         </div>
-        <img style="width: 50%;" src="/assets/sections-images/fast/image2.png" alt="">
+        <div>
+            <img style="width: 100%; border-radius: 12px;" src="/assets/sections-images/fast/image2.png" alt="">
+        </div>
     </mat-card>
+    }@else {
+    <div>
+        <mat-card style="background-color: #308740; padding: 0;">
+            <img style="width: 100%;" src="/assets/sections-images/fast/image2.png" alt="">
+        </mat-card>
+        <div>
+            <h4 style="font-size: larger;">Optimisé pour votre appareil</h4>
+            <p style="font-size: 1rem;">Nous avons développé Chrome pour que vos appareils soient compatibles avec
+                différentes
+                plates-formes. Vous
+                profitez ainsi d'une expérience fluide, quel que soit votre équipement.</p>
+        </div>
+    </div>
+    }
 </div>

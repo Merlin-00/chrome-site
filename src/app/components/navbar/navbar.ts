@@ -118,24 +118,22 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       z-index: 1100; 
       transform: translateZ(0);
-      }
-
-      .left-container {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .logo-link {
-        margin-left: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 400;
-        font-size: 1.5rem;
-        img {
-          width: 35px;
-          height: 35px;
+        .left-container {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          .logo-link {
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 400;
+            font-size: 1.5rem;
+            img {
+              width: 35px;
+              height: 35px;
+            }
+          }
         }
       }
 

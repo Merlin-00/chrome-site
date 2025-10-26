@@ -23,17 +23,28 @@
             </div>
             <div class="h-s">
                 <mat-checkbox>
-                    Aidez-nous à améliorer Google Chrome en nous envoyant
-                    automatiquement des statistiques
-                    d'utilisation et des rapports d'erreur. <a class="more"
-                        href="https://www.google.com/support/chrome/bin/answer.py?answer=96817&hl=en" target="_blank"
-                        rel="noopener noreferrer"> En savoir plus</a>
+                    <span>
+                        Aidez-nous à améliorer Google Chrome en nous envoyant
+                        automatiquement des <br> statistiques
+                        d'utilisation et des rapports d'erreur. <a class="more"
+                            href="https://www.google.com/support/chrome/bin/answer.py?answer=96817&hl=en"
+                            target="_blank" rel="noopener noreferrer"> En savoir plus</a>
+                    </span>
                 </mat-checkbox>
-                <span>En téléchargeant Chrome, vous acceptez les Conditions d'utilisation de Google et les <a
+                <span>En téléchargeant Chrome, vous acceptez les <a href="https://policies.google.com/terms"
+                        target="_blank" rel="noopener noreferrer">Conditions d'utilisation de Google</a> et les <br> <a
                         href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Conditions
                         d'utilisation supplémentaires de Google Chrome et ChromeOS.</a></span>
             </div>
         </div>
+        @if (!(width() >= medium)) {
+        <br>
+        <div style="display: flex; justify-content: center;">
+            <a href="#fast">Faites défiler pour afficher plus
+                <mat-icon>keyboard_arrow_down</mat-icon></a>
+        </div>
+        }
+        @if (width() >= medium) {
         <div class="section-image-scroll" id="section-image-scroll">
             <img class="img1" src="/assets/sections-images/image1.png" alt="image1">
             <img class="img2" src="/assets/sections-images/image2.png" alt="image2">
@@ -41,9 +52,11 @@
             <img class="img2" src="/assets/sections-images/image4.png" alt="image4">
             <img class="img1" src="/assets/sections-images/image5.png" alt="image5">
         </div>
+        }
     </section>
 
     <!-- Sections: each section has data-home-section attribute for observer -->
+    @if (width() >= medium) {
     <section data-home-section id="update">
         <app-update></app-update>
     </section>
@@ -55,10 +68,20 @@
     <section data-home-section id="secure">
         <app-secure></app-secure>
     </section>
+    }
 
     <section data-home-section id="fast">
         <app-fast></app-fast>
     </section>
+    @if (!(width() >= medium)) {
+    <section data-home-section id="secure">
+        <app-secure></app-secure>
+    </section>
+    <section data-home-section id="to-you">
+        <app-to-you></app-to-you>
+    </section>
+
+    }
 
     <section data-home-section id="by-google">
         <app-for-google></app-for-google>
