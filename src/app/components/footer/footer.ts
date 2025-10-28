@@ -367,6 +367,12 @@ import { DomSanitizer } from '@angular/platform-browser';
       .help-icon{
         color: #7c7d7dff;
       }
+      @media(max-width: 800px){
+        .footer-top{
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
  `,
 })
 export class Footer {
