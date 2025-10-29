@@ -68,8 +68,12 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
           <div>
             <div class="drawer-header">
               <a routerLink="/" class="logo-link">
-                <img src="/assets/chrome.png" alt="logo" />
-                <span>{{ appName }}</span>
+                <img
+                  style="width: 30px; height: 30px;"
+                  src="/assets/chrome.png"
+                  alt="logo"
+                />
+                <span style="font-size: 1.5rem;">{{ appName }}</span>
               </a>
             </div>
             <mat-divider></mat-divider>
@@ -126,13 +130,7 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
             margin-left: 1rem;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-weight: 400;
-            font-size: 1.5rem;
-            img {
-              width: 35px;
-              height: 35px;
-            }
+            gap: 1rem;
           }
         }
       }
