@@ -130,7 +130,13 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
             margin-left: 1rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 8px;
+            font-weight: 400;
+            font-size: 1.5rem;
+            img {
+              width: 35px;
+              height: 35px;
+            }
           }
         }
       }
