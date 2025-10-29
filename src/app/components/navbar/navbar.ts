@@ -164,7 +164,7 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
         width: 100%;
         height: 100%;
         background-color: rgba(32, 33, 36, 0.5);
-        z-index: 9;
+        z-index: 2000;
         transition: opacity 0.3s ease;
       }
 
