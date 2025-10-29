@@ -36,6 +36,7 @@ import { isPlatformBrowser } from '@angular/common';
       <mat-select
         class="mobile-select"
         placeholder="Explorer"
+        [value]="activeSection()"
         (selectionChange)="onSelect($event.value)"
       >
         @for (section of sectionsNavMobile; track $index) {
