@@ -330,7 +330,8 @@ import { DomSanitizer } from '@angular/platform-browser';
       flex-direction: column;
       gap: 2rem;
       padding: 1rem 2rem;
-      border-top: 1px solid #dadce0; 
+      border-top: 1px solid #dadce0;
+      padding-bottom: 2rem; 
     }
         
     .footer-bottom-left {
