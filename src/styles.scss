@@ -124,9 +124,14 @@ h4 {
   color: var(--mat-sys-primary);
 }
 @media (max-width: 850px) {
+  .card {
+    margin: 0;
+  }
+}
+@media (max-width: 850px) {
   h1 {
     gap: 2rem;
-    font-size: 3rem;
+    font-size: 2rem;
   }
   h2 {
     gap: 1rem;
@@ -135,12 +140,12 @@ h4 {
 @media (max-width: 640px) {
   h1,
   h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 @media (max-width: 400px) {
   h1,
   h2 {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }

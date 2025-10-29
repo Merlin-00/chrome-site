@@ -52,15 +52,10 @@ img {
     gap: 1rem;
   }
   .card-child {
-    margin-top: 0;
-    margin-left: 5rem;
-    margin-right: 5rem;
     mat-card {
-      width: 400px;
-      mat-card-footer {
-        .bt {
-          margin-right: 20%;
-        }
+      width: 300px;
+      img {
+        width: 100%;
       }
     }
   }

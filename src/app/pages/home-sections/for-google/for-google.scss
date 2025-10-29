@@ -42,9 +42,11 @@
 }
 @media (max-width: 800px) {
   .card-g {
+    margin: 0;
     mat-card {
+      width: 300px;
       img {
-        width: 300px;
+        width: 100%;
       }
     }
   }

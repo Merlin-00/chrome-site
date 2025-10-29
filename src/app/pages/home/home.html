@@ -19,8 +19,11 @@
                     <mat-icon>download</mat-icon>Télécharger Chrome
                 </button><br />
                 <a href="https://www.google.com/intl/fr/chrome/update/">Je souhaite mettre à jour Chrome</a>
+                @if (width() >= medium) {
                 <br /><span>Pour Windows 11/10 64-bit</span>
+                }
             </div>
+            @if (width() >= medium) {
             <div class="h-s">
                 <mat-checkbox>
                     <span>
@@ -36,8 +39,9 @@
                         href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Conditions
                         d'utilisation supplémentaires de Google Chrome et ChromeOS.</a></span>
             </div>
+            }
         </div>
-        @if (!(width() >= medium)) {
+        @if (width() >= large) {
         <br>
         <div style="display: flex; justify-content: center;">
             <a href="#fast">Faites défiler pour afficher plus
@@ -51,6 +55,12 @@
             <img class="img1" src="/assets/sections-images/image3.png" alt="image3">
             <img class="img2" src="/assets/sections-images/image4.png" alt="image4">
             <img class="img1" src="/assets/sections-images/image5.png" alt="image5">
+        </div>
+        }@else {
+        <div class="section-image">
+            <img class="img1" src="/assets/sections-images/image1.png" alt="image1">
+            <img class="img2" src="/assets/sections-images/image4.png" alt="image4">
+            <img class="img1" src="/assets/sections-images/image3.png" alt="image3">
         </div>
         }
     </section>
@@ -90,28 +100,31 @@
     <section data-home-section id="faq">
         <app-frequent-questions></app-frequent-questions>
     </section>
-    <mat-card class="card"
-        style="background-color: #1a73e8; padding: 10rem; padding-top: 5rem; padding-bottom: 0; text-align: center;">
-        <div>
-            <h1 style="color: white; margin-bottom: 0; margin-top: 0;">Emportez votre navigateur avec vous</h1>
+    <section>
+        <mat-card class="last-card">
+            <div>
+                <h1 style="color: white; margin-bottom: 0; margin-top: 0;">Emportez votre navigateur avec vous</h1>
+                @if (width() >= medium) {
+                <p style="color: white;">Téléchargez Chrome sur votre appareil mobile ou votre tablette et
+                    connectez-vous à
+                    votre compte pour profiter de la même expérience sur votre navigateur, où que vous soyez.</p><br>
+                }
+                <button mat-raised-button
+                    style="padding: 2rem; font-size: 1rem; margin: 1rem; margin-bottom: 3rem;"><mat-icon>download</mat-icon>
+                    Télécharger
+                    Chrome</button>
+            </div>
             @if (width() >= medium) {
-            <p style="color: white;">Téléchargez Chrome sur votre appareil mobile ou votre tablette et connectez-vous à
-                votre compte pour profiter de la même expérience sur votre navigateur, où que vous soyez.</p><br>
+            <div
+                style="display: flex; flex-direction: column; background-color: white; width: 20%; border-radius: 12px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; color: #5b5b5b; margin-left: 90%;">
+                <img style="width: 80%; padding: 1rem;" src="/assets/chrome_qr_code.png" alt=""><span
+                    style="text-align: center;">Télécharger <br>
+                    Chrome pour
+                    votre
+                    <br>téléphone</span>
+            </div>
             }
-            <button mat-raised-button
-                style="padding: 2rem; font-size: 1rem; margin: 1rem; margin-bottom: 3rem;"><mat-icon>download</mat-icon>
-                Télécharger
-                Chrome</button>
-        </div>
-        @if (width() >= medium) {
-        <div
-            style="display: flex; flex-direction: column; background-color: white; width: 20%; border-radius: 12px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; color: #5b5b5b; margin-left: 90%;">
-            <img style="width: 80%; padding: 1rem;" src="/assets/chrome_qr_code.png" alt=""><span
-                style="text-align: center;">Télécharger <br>
-                Chrome pour
-                votre
-                <br>téléphone</span>
-        </div>
-        }
-    </mat-card>
+        </mat-card>
+    </section>
 </main>
+<br>

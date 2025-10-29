@@ -97,14 +97,47 @@ a,
 .section-image-scroll .img2 {
   width: 240px;
 }
+.section-image {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  overflow: hidden;
+  margin-top: 2rem;
+  .img1 {
+    width: 80px;
+  }
+  .img2 {
+    width: 100px;
+  }
+}
+.last-card {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5rem;
+  margin-top: 3rem;
+  gap: 3rem;
+  background-color: #1a73e8;
+  padding: 10rem;
+  padding-top: 5rem;
+  padding-bottom: 0;
+  text-align: center;
+}
 @media (max-width: 780px) {
+  .home-root section {
+    width: 300px;
+    margin: 0 auto;
+  }
   .hero-second {
     grid-template-rows: 300px auto;
   }
   .h-s {
-    .btn {
-      padding: 1rem;
-      font-size: 13px;
+    grid-column: 1/4;
+  }
+  .last-card {
+    padding: 0;
+    margin: 0;
+    div h1 {
+      padding-top: 5rem;
     }
   }
 }
