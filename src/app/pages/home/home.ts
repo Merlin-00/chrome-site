@@ -45,71 +45,125 @@ export default class Home implements OnInit {
   private currentTranslateX = 0;
   private maxTranslate = 200;
 
+  private lastActiveId: string | null = null;
+  private observer: IntersectionObserver | null = null;
+  private debounceTimeout: any = null;
+  private readonly DEBOUNCE_TIME = 100; // Delay in ms for debounce
+  private readonly INTERSECTION_THRESHOLD = [0, 0.25, 0.5, 0.75, 1]; // Multiple thresholds for better accuracy
+
   ngOnInit(): void {
     this.windows.init();
 
     if (isPlatformBrowser(this.platformId)) {
       requestAnimationFrame(() => this.initObserver());
+
+      // Keep handleImageScroll if the parallax effect is still desired
       this.lastScrollY = window.scrollY;
-      window.addEventListener('scroll', this.handleImageScroll.bind(this));
+      window.addEventListener('scroll', this.handleImageScroll.bind(this), {
+        passive: true,
+      });
+    }
+  }
+
+  // Component destruction to clean up the observer
+  ngOnDestroy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+    if (isPlatformBrowser(this.platformId)) {
+      window.removeEventListener('scroll', this.handleImageScroll.bind(this));
     }
   }
 
   private initObserver() {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    const sections = document.querySelectorAll<HTMLElement>(
-      '[data-home-section]'
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-home-section]')
     );
+    if (!sections.length) return;
 
-    if (!sections || sections.length === 0) return;
+    // Set the active section when at least 50% of it is visible
+    // Or: '0px 0px -50% 0px' to activate when its top reaches the middle of the screen.
+    // The 'rootMargin' option is recommended for mobile.
+    const options: IntersectionObserverInit = {
+      root: null,
+      rootMargin: '-10% 0px -40% 0px', // Adjust detection area for more stability
+      threshold: this.INTERSECTION_THRESHOLD, // Use multiple thresholds
+    };
 
-    // Observer to show/hide the shortbar based on the first section
-    const first = sections[0];
-    if (typeof IntersectionObserver !== 'undefined') {
-      const firstObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const firstVisible =
-              entry.isIntersecting && entry.intersectionRatio > 0.1;
-            this.state.showShortBar.set(!firstVisible);
+    const callback: IntersectionObserverCallback = (entries) => {
+      // Cancel any previous debounce
+      if (this.debounceTimeout) {
+        clearTimeout(this.debounceTimeout);
+      }
+
+      // Debounce the update of the active section
+      this.debounceTimeout = setTimeout(() => {
+        let activeSectionId: string | null = null;
+        let maxVisibility = 0;
+
+        // 1. Handle the top bar (show when leaving the first section)
+        const first = sections[0];
+        const firstEntry = entries.find((e) => e.target.id === first.id);
+        if (firstEntry) {
+          // If the first section is no longer in view (entered the negative margin)
+          // The condition for displaying the top bar can be reviewed for more fluidity
+          // For example, if the top of the viewport exceeds half of the first section
+          this.state.showShortBar.set(
+            window.scrollY > first.offsetHeight * 0.5
+          );
+        }
+
+        // Find the entry that INTERSECTS (is active)
+        // Look for the last section that starts to intersect the defined area
+        // Sort entries by intersection ratio to find the most visible
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .forEach((entry) => {
+            const ratio = entry.intersectionRatio;
+            if (ratio > maxVisibility) {
+              maxVisibility = ratio;
+              activeSectionId = entry.target.id;
+            }
           });
-        },
-        { threshold: [0, 0.1, 0.5] }
-      );
-      firstObserver.observe(first);
 
-      // Observer to track the most visible section
-      const allObserver = new IntersectionObserver(
-        (entries) => {
-          // Create a temporary map
-          const visibilityMap = new Map<string, number>();
+        // Fallback if at the very beginning/top
+        if (window.scrollY === 0 && sections.length > 0) {
+          activeSectionId = sections[0].id;
+        }
 
-          for (const entry of entries) {
-            const id = (entry.target as HTMLElement).id;
-            if (id) visibilityMap.set(id, entry.intersectionRatio);
-          }
+        // Apply changes only if necessary
+        if (activeSectionId && this.lastActiveId !== activeSectionId) {
+          this.lastActiveId = activeSectionId;
+          this.state.activeSection.set(activeSectionId);
 
-          // Determine the most visible section at this precise moment
-          const mostVisible = Array.from(visibilityMap.entries()).sort(
-            (a, b) => b[1] - a[1]
-          )[0];
+          // Silent update of the URL
+          try {
+            this.router.navigate([], {
+              fragment: activeSectionId,
+              replaceUrl: true,
+            });
+          } catch {}
+        }
+      }, this.DEBOUNCE_TIME); // Fin du timeout
+      // End of timeout
+    };
 
-          if (!mostVisible) return;
-          const [id, ratio] = mostVisible;
+    // Create the observer
+    this.observer = new IntersectionObserver(callback, options);
 
-          // More tolerant threshold: > 0.25 for short sections
-          if (ratio > 0.25 && id !== this.state.activeSection()) {
-            this.state.activeSection.set(id);
-            try {
-              this.router.navigate([], { fragment: id, replaceUrl: true });
-            } catch {}
-          }
-        },
-        { threshold: Array.from({ length: 20 }, (_, i) => i / 20) }
-      );
+    // Observe all sections
+    sections.forEach((section) => {
+      this.observer!.observe(section);
+    });
 
-      sections.forEach((s) => allObserver.observe(s));
+    // Initialize the active section on load
+    // The first section should be active at the start
+    if (sections.length > 0) {
+      const firstSectionId = sections[0].id;
+      this.lastActiveId = firstSectionId;
+      this.state.activeSection.set(firstSectionId);
     }
   }
 

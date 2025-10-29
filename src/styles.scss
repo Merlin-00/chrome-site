@@ -38,6 +38,8 @@ body {
 
 html,
 body {
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
   margin: 0;
   height: 100%;
 }
