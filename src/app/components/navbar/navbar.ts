@@ -176,7 +176,7 @@ import { WindowsObserver } from '../../core/services/utilities/windows-observer'
         height: 100%;
         width: 100%;
         display: flex;
-        z-index: 10;
+        z-index: 2000;
         animation: slideIn 0.3s ease forwards;
       }
 
