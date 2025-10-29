@@ -44,7 +44,9 @@ import { isPlatformBrowser } from '@angular/common';
         }
       </mat-select>
 
-      <button class="btn" mat-flat-button>Télécharger Chrome</button>
+      <button class="btn" style="font-size: 10px; width: 100%;" mat-flat-button>
+        Télécharger Chrome
+      </button>
       }
     </mat-toolbar>
     }
