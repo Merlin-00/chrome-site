@@ -55,8 +55,7 @@ import { isPlatformBrowser } from '@angular/common';
     .shortbar {
       position: fixed;
       top: 5%;
-      right: 25%;
-      left: 25%;
+      right: 50%;
       transform: translateX(50%);
       display: flex;
       align-items: center;
@@ -66,7 +65,6 @@ import { isPlatformBrowser } from '@angular/common';
       box-shadow: 0 6px 18px rgba(32, 33, 36, 0.08);
       border-radius: 35px;
       z-index: 100;
-      animation: shortbar-enter 360ms cubic-bezier(.2,.8,.2,1) both;
       max-width: max-content;
       height: fit-content;
           .btn {
@@ -109,11 +107,11 @@ import { isPlatformBrowser } from '@angular/common';
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
+
     /* --- Version mobile --- */
-    @media (max-width: 920px) {
+    @media (max-width: 800px) {
       .shortbar {
         position: fixed;
-        left: 0;
         right: 0;
         bottom: 0;
         top: auto;
@@ -121,8 +119,8 @@ import { isPlatformBrowser } from '@angular/common';
         border-radius: 0;
         border-top: 1px solid #dadce0;
         box-shadow: 0 -4px 18px rgba(32, 33, 36, 0.08);
+        animation: shortbar-enter 360ms cubic-bezier(.2,.8,.2,1) both;
         padding: 0.75rem 1rem;
-        animation: slide-up 420ms cubic-bezier(.2,.8,.2,1) both;
         max-width: 100%;
         height: 10%;
       }
@@ -131,17 +129,6 @@ import { isPlatformBrowser } from '@angular/common';
         max-width: 100px;
         padding: 3rem;
         color: #1a73e8;
-      }
-
-      @keyframes slide-up {
-        from {
-          opacity: 0;
-          transform: translateY(100%);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
     }
   `,
